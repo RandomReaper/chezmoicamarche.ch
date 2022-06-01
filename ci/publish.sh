@@ -25,4 +25,6 @@ if [ ! -f "$HOSTFILE" ]; then
 	exit 1
 fi
 
-rsync -Pa --delete -e "ssh -i $KEYFILE -o UserKnownHostsFile=$HOSTFILE" "$WORKDIR" ubuntu@a.pignat.org:/var/www/chezmoicamarche.ch/
+pushd "$WORKINGDIR"
+rsync -Pa --delete -e "ssh -i $KEYFILE -o UserKnownHostsFile=$HOSTFILE" . ubuntu@a.pignat.org:/var/www/chezmoicamarche.ch/
+popd
